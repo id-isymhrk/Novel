@@ -4,7 +4,6 @@ using UnityEngine;
 
 public partial class GameManager : MonoBehaviour
 {
-
     private const char SIGN_MAIN_START = '「';
     private const char SIGN_MAIN_END = '」';
     private const char SIGN_COMMAND = '!';

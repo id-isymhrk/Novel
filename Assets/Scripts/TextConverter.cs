@@ -8,11 +8,11 @@ public class TextConverter : MonoBehaviour
     [SerializeField]
     private string textFilePath = "Texts/";
 
-    private const string defaultFile = "Scenario";
+    private const string defaultFile = "test";
 
     public string LoadTextFile(string path)
     {
-        if (Resources.Load<TextAsset>(path).IsUnityNull())
+        if (Resources.Load<TextAsset>(textFilePath + path).IsUnityNull())
         {
             path = defaultFile;
         }

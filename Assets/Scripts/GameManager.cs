@@ -35,13 +35,13 @@ public partial class GameManager : MonoBehaviour
 
 
     //初期化
-    private void Init()
+    private void Init(string file)
     {
         _textConverter = GetComponent<TextConverter>();
         _charaManager = GetComponent<CharaManager>();
         _backgroundManager = GetComponent<BackgroundManager>();
 
-        _text = _textConverter.LoadTextFile(""); //異常時はデフォルトのファイルを読み込む
+        _text = _textConverter.LoadTextFile(file); //異常時はデフォルトのファイルを読み込む
 
         Queue<string> subScenes = DivideSIGN(_text, SIGN_SUBSCENE);
         foreach (string subScene in subScenes)
@@ -63,7 +63,8 @@ public partial class GameManager : MonoBehaviour
     private void Start()
     {
         //ReadLine(_text);
-        Init();
+        Init("test");
+        //Init("Scenario");
     }
     private void Update()
     {
@@ -112,6 +113,7 @@ public partial class GameManager : MonoBehaviour
     public void JumpTo(string parameter)
     {
         parameter = parameter.Substring(parameter.IndexOf('"') + 1, parameter.LastIndexOf('"') - parameter.IndexOf('"') - 1);
-        _pageQueue = _subScenes[parameter];
+        //_pageQueue = _subScenes[parameter];
+        Init(parameter);
     }
 }
