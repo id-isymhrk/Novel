@@ -1,28 +1,10 @@
-&???uHello,WorldIv
+ï»¿&???ã€Œå¤§ä¸ˆå¤«ï¼Ÿã€
 
-&!charaimg_active="yusya"="true"
+&!charaimg_active="chara"="true"
 
-!background_sprite="background_sprite2"
+&ã‹ãªã€Œâ€¦â€¦ã©ã†ã‹ã—ãŸï¼Ÿã€
+&ã‹ãªã€Œä½•ã‹æ‚©ã‚“ã§ã‚‹ã®ï¼Ÿã€
 
-&–¼–³‚µu‚±‚ñ‚É‚¿‚ÍIv
-&!select_text="NEXT1"="‚±‚ñ‚É‚¿‚Í"
-!select_text="NEXT2"="‚±‚ñ‚Î‚ñ‚Í"
-!select_text="NEXT3"="‚¨‚Í‚æ‚¤‚²‚´‚¢‚Ü‚·"
-&!jump_to="NEXT1"
-
-#END&
-!charaimg_delete="yusya"=""
-
-&uƒ|ƒŠƒSƒ“‚ğíœ‚µ‚Ü‚µ‚½v
-
-#NEXT1&
-u‚±‚ñ‚É‚¿‚Í‚ğ‘I‚ñ‚¾v
-&!jump_to="END"
-
-#NEXT2&
-u‚±‚ñ‚Î‚ñ‚Í‚ğ‘I‚ñ‚¾v
-&!jump_to="END"
-
-#NEXT3&
-u‚¨‚Í‚æ‚¤‚²‚´‚¢‚Ü‚·‚ğ‘I‚ñ‚¾v
-&!jump_to="END"
+&
+!select_text="test2"="test2"
+!select_text="test3"="test3"

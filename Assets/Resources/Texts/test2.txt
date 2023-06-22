@@ -1,0 +1,6 @@
+﻿
+&!charaimg_active="chara"="true"
+
+&かな「test2だよ」
+&かな「test2だよ」
+&かな「test2だよ」
