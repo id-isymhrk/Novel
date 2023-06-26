@@ -176,7 +176,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba2058ab8662be14bb449a09ad363687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainTextPanel: {fileID: 1314344631}
   mainText: {fileID: 1501850529}
+  nameTextPanel: {fileID: 766750100}
   nameText: {fileID: 1171720617}
   captionSpeed: 0.1
   nextPageIcon: {fileID: 1692010968}
@@ -222,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294fad4f8c9f10d47a2edb8d5d82fa9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabsDirectory: Prefabs/
+  prefabsDirectory: Prefabs/character/
   characterImages: {fileID: 739732066}
 --- !u!1 &239165221
 GameObject:
@@ -333,7 +335,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 120}
+  m_AnchoredPosition: {x: 0, y: 20}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &739732066
@@ -365,7 +367,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 858844396}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -404,7 +406,7 @@ RectTransform:
   m_Children:
   - {fileID: 1171720616}
   m_Father: {fileID: 858844396}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -479,9 +481,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 739732067}
   - {fileID: 1314344632}
   - {fileID: 766750101}
-  - {fileID: 739732067}
   - {fileID: 1692010969}
   - {fileID: 505902483}
   m_Father: {fileID: 64956437}
@@ -512,7 +514,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b87b7e6b24329434881d87cfb34075ba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 972063d4387e7524f80c1e301dc3229a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -765,7 +767,7 @@ RectTransform:
   m_Children:
   - {fileID: 1501850528}
   m_Father: {fileID: 858844396}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
