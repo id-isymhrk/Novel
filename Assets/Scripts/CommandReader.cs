@@ -13,18 +13,25 @@ public partial class GameManager : MonoBehaviour
     private const string COMMAND_BACKGROUND = "background";
     private const string COMMAND_SELECT = "select";
     private const string COMMAND_JUMP = "jump_to";
-
+    private const string COMMAND_PAGE = "page_to";
+    private const string COMMAND_WAIT = "wait";
     private void ReadLine(string text)
     {
         if (text[0].Equals(SIGN_COMMAND))
         {
             ReadCommand(text);
 
-            if (ButtonNum() <= 0)
+            if (ButtonNum() > 0)
             {
-                ShowNextPage();
+                return;
+            }
+            if (_waitTime > 0)
+            {
+                StartCoroutine(WaitForCommand());
+                return;
             }
 
+            NextCommandLine();//事実上の再起
             return;
         }
 
@@ -43,6 +50,7 @@ public partial class GameManager : MonoBehaviour
         }
 
         mainText.text = "";
+        mainText.transform.parent.gameObject.SetActive(true);
         _charQueue = SeparateString(main);
 
         StartCoroutine(ShowChars());
@@ -70,9 +78,17 @@ public partial class GameManager : MonoBehaviour
             {
                 JumpTo(cmds[1]);
             }
+            if (cmds[0].Contains(COMMAND_PAGE))
+            {
+                PageTo(cmds[1]);
+            }
             if (cmds[0].Contains(COMMAND_SELECT))
             {
                 SetSelectButton(cmds[0].Replace(COMMAND_SELECT, ""), cmds[1], cmds[2]);
+            }
+            if (cmds[0].Contains(COMMAND_WAIT))
+            {
+                SetWaitTime(cmds[1]);
             }
         }
     }

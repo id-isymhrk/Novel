@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,11 +27,16 @@ public partial class GameManager : MonoBehaviour
         {
             button = Instantiate(Resources.Load<Button>(prefabsDirectory + BUTTON_PREFAB), selectButtons.transform);
             button.name = name;
-            button.transform.Translate(0, -_buttonList.Count * 100, 0);
+            button.transform.Translate(0, -_buttonList.Count * 60, 0);
             button.onClick.AddListener(() => SelectButtonOnClick(name));
             _buttonList.Add(button);
         }
         SetImage(cmd, parameter, button.image);
+
+        mainTextPanel.SetActive(false);
+        nameTextPanel.SetActive(false);
+        mainText.text = "";
+        nameText.text = "";
     }
 
     private void SetImage(string cmd, string parameter, Image image)
@@ -56,8 +62,11 @@ public partial class GameManager : MonoBehaviour
 
         _buttonList.Clear();
 
+        mainTextPanel.SetActive(true);
+        nameTextPanel.SetActive(true);
+
         JumpTo('"' + label + '"');
-        ShowNextPage();
+        NextCommandLine();
     }
 
     public float ButtonNum()

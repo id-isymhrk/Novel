@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CharaManager : MonoBehaviour
 {
+    private const string OPTION_SPRITE = "_sprite";
     private const string OPTION_SIZE = "_size";
     private const string OPTION_POSITION = "_pos";
     private const string OPTION_ROTATION = "_rotate";
@@ -13,11 +14,13 @@ public class CharaManager : MonoBehaviour
     private const string OPTION_DELETE = "_delete";
 
     [SerializeField]
-    private string prefabsDirectory = "Prefabs/";
+    private string prefabsDirectory = "Prefabs/character/";
 
     [SerializeField]
     private GameObject characterImages;
     private List<Image> _charaImageList = new List<Image>();
+
+    private TextConverter _textConverter;
 
     public void SetCharacterImage( string cmd, string name, string parameter)
     {
@@ -27,6 +30,7 @@ public class CharaManager : MonoBehaviour
         {
             image = Instantiate(Resources.Load<Image>(prefabsDirectory + name), characterImages.transform);
             image.name = name;
+            image.sprite = Instantiate(Resources.Load<Sprite>(prefabsDirectory + name));
             _charaImageList.Add(image);
         }
         CharaOption(cmd, parameter, image);
@@ -39,16 +43,16 @@ public class CharaManager : MonoBehaviour
         switch (cmd)
         {
             case OPTION_SIZE:
-                image.GetComponent<RectTransform>().sizeDelta = ParameterToVector3(parameter);
+                image.GetComponent<RectTransform>().sizeDelta = _textConverter.ParameterToVector3(parameter);
                 break;
             case OPTION_POSITION:
-                image.GetComponent<RectTransform>().anchoredPosition = ParameterToVector3(parameter);
+                image.GetComponent<RectTransform>().anchoredPosition = _textConverter.ParameterToVector3(parameter);
                 break;
             case OPTION_ROTATION:
-                image.GetComponent<RectTransform>().eulerAngles = ParameterToVector3(parameter);
+                image.GetComponent<RectTransform>().eulerAngles = _textConverter.ParameterToVector3(parameter);
                 break;
             case OPTION_ACTIVE:
-                image.gameObject.SetActive(ParameterToBool(parameter));
+                image.gameObject.SetActive(_textConverter.ParameterToBool(parameter));
                 break;
             case OPTION_DELETE:
                 _charaImageList.Remove(image);
@@ -61,17 +65,9 @@ public class CharaManager : MonoBehaviour
                 break;
         }
     }
-    private bool ParameterToBool(string parameter)
+
+    private void Start()
     {
-        string p = parameter.Replace(" ", "");
-
-        return p.Equals("true") || p.Equals("TRUE");
-    }
-
-    private Vector3 ParameterToVector3(string parameter)
-    {
-        string[] ps = parameter.Replace(" ", "").Split(',');
-
-        return new Vector3(float.Parse(ps[0]), float.Parse(ps[1]), float.Parse(ps[2]));
+        _textConverter= new TextConverter();
     }
 }

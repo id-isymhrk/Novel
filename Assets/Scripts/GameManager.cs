@@ -12,7 +12,11 @@ using System;
 public partial class GameManager : MonoBehaviour
 {
     [SerializeField]
+    public GameObject mainTextPanel;
+    [SerializeField]
     public TextMeshProUGUI mainText;
+    [SerializeField]
+    public GameObject nameTextPanel;
     [SerializeField]
     public TextMeshProUGUI nameText;
 
@@ -31,7 +35,7 @@ public partial class GameManager : MonoBehaviour
            new Dictionary<string, Queue<string>>();
 
     private string _text = "";
-
+    private float _waitTime = 0;
 
 
     //初期化
@@ -58,13 +62,13 @@ public partial class GameManager : MonoBehaviour
 
         _pageQueue = _subScenes.First().Value;
         //最初のシーン（ページ）を表示
-        ShowNextPage();
+        NextCommandLine();
     }
     private void Start()
     {
         //ReadLine(_text);
-        Init("test");
-        //Init("Scenario");
+        //Init("test");
+        Init("Scenario");
     }
     private void Update()
     {
@@ -75,7 +79,7 @@ public partial class GameManager : MonoBehaviour
         }
     }
 
-    public bool ShowNextPage()
+    public bool NextCommandLine()
     {
         if (_pageQueue.Count <= 0)
         {
@@ -85,7 +89,7 @@ public partial class GameManager : MonoBehaviour
         // オブジェクトを非表示にする
         nextPageIcon.SetActive(false);
 
-        ReadLine(_pageQueue.Dequeue());//TextReader.cs
+        ReadLine(_pageQueue.Dequeue());//CommandReader.cs
 
         return true;
     }
@@ -102,7 +106,7 @@ public partial class GameManager : MonoBehaviour
             if (ButtonNum() > 0)
                 return;
 
-            if (!ShowNextPage())
+            if (!NextCommandLine())
             {
                 // UnityエディタのPlayモードを終了する
                 UnityEditor.EditorApplication.isPlaying = false;
@@ -112,8 +116,33 @@ public partial class GameManager : MonoBehaviour
 
     public void JumpTo(string parameter)
     {
+        mainTextPanel.SetActive(false);
+        nameTextPanel.SetActive(false);
+        parameter = parameter.Substring(parameter.IndexOf('"') + 1, parameter.LastIndexOf('"') - parameter.IndexOf('"') - 1);
+        _pageQueue = _subScenes[parameter];
+        //Init(parameter);
+    }
+
+    public void PageTo(string parameter)
+    {
+        mainTextPanel.SetActive(false);
+        nameTextPanel.SetActive(false);
         parameter = parameter.Substring(parameter.IndexOf('"') + 1, parameter.LastIndexOf('"') - parameter.IndexOf('"') - 1);
         //_pageQueue = _subScenes[parameter];
         Init(parameter);
+    }
+
+    private void SetWaitTime(string parameter)
+    {
+        parameter = parameter.Substring(parameter.IndexOf('"') + 1, parameter.LastIndexOf('"') - parameter.IndexOf('"') - 1);
+        _waitTime = float.Parse(parameter);
+    }
+
+    private IEnumerator WaitForCommand()
+    {
+        yield return new WaitForSeconds(_waitTime);
+        _waitTime = 0;
+        NextCommandLine();
+        yield break;
     }
 }

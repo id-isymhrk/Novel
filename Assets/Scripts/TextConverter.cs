@@ -21,6 +21,20 @@ public class TextConverter : MonoBehaviour
         return textAsset.text.Replace("\n", "").Replace("\r", "");
     }
 
+    public bool ParameterToBool(string parameter)
+    {
+        string p = parameter.Replace(" ", "");
+
+        return p.Equals("true") || p.Equals("TRUE");
+    }
+
+    public Vector3 ParameterToVector3(string parameter)
+    {
+        string[] ps = parameter.Replace(" ", "").Split(',');
+
+        return new Vector3(float.Parse(ps[0]), float.Parse(ps[1]), float.Parse(ps[2]));
+    }
+
     // Start is called before the first frame update
     void Start()
     {

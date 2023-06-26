@@ -25,7 +25,10 @@ public partial class GameManager : MonoBehaviour
         // コルーチンをストップ
         StopCoroutine(ShowChars());
         // キューが空になるまで表示
-        while (OutputChar()) ;
+        while (OutputChar()) ; 
+
+        _waitTime = 0;
+        nextPageIcon.SetActive(true);
     }
     private IEnumerator ShowChars()
     {
