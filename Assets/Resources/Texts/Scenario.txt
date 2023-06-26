@@ -1,14 +1,24 @@
-﻿&???「覚悟はできたか？」
+﻿&!background_sprite="background1"
 
-&!charaimg_active="chara"="true"
+&???「そろそろ時間だ」
+&???「このままでは手遅れになってもおかしくない」
+&???「この世界を救う勇者を選ぶのだ」
 
-&かな「……どうかした？」
-&かな「何か悩んでるの？」
 
 &
-!select_text="NEXT1"="どうしてこんなことを？"
-!select_text="NEXT2"="死にたくない"
-!select_text="NEXT3"="（何も言わない）"
+!select_text="SELECT"="わかった"
+!select_text="BADEND"="いいや、選びたくないね"
+
+#BADEND
+&!background_sprite="badend"
+!wait="5"
+&「」
+
+#SELECT
+&!charaimg_active="yusya"="true"
+
+&!select_text="END"="心優しそうな少女を選ぶ"
+!select_text="NEXT2"="別の人物を選ぶ"
 
 #NEXT1
 &勇者「どうしてって、本当に理由を知りたいのか？どうせ死ぬのに」
@@ -28,5 +38,5 @@
 
 #END&
 !charaimg_delete="yusya"=""
-
 &「ポリゴンを削除しました」
+&!page_to="test"
