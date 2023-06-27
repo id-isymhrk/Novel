@@ -4,39 +4,16 @@
 &???「このままでは手遅れになってもおかしくない」
 &???「この世界を救う勇者を選ぶのだ」
 
-
 &
-!select_text="SELECT"="わかった"
+!select_text="NEXT1"="わかった"
 !select_text="BADEND"="いいや、選びたくないね"
+
+&???「そうか、残念だよ」
 
 #BADEND
 &!background_sprite="badend"
 !wait="5"
-&「」
-
-#SELECT
-&!charaimg_active="yusya"="true"
-
-&!select_text="END"="心優しそうな少女を選ぶ"
-!select_text="NEXT2"="別の人物を選ぶ"
+&「こうして世界は滅んだ」
 
 #NEXT1
-&勇者「どうしてって、本当に理由を知りたいのか？どうせ死ぬのに」
-&勇者「悪いけど、俺はフィクションみたいに優しくないんだ。知ってるだろ?」
-&!jump_to="END"
-
-#NEXT2
-&勇者
-「そうか。俺も死にたくないよ。一緒だな」
-&!jump_to="END"
-
-#NEXT3
-&勇者
-「じゃあその調子で死んでくれるか？断末魔とか嫌いだからさ」
-&!jump_to="END"
-
-
-#END&
-!charaimg_delete="yusya"=""
-&「ポリゴンを削除しました」
-&!page_to="test"
+&!page_to="select"

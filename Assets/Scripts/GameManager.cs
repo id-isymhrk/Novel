@@ -20,7 +20,6 @@ public partial class GameManager : MonoBehaviour
     [SerializeField]
     public TextMeshProUGUI nameText;
 
-
     private const char SIGN_PAGE = '&';
     private const char SIGN_SUBSCENE = '#';
 
