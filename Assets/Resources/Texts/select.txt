@@ -5,7 +5,6 @@
 &!select_text="END"="心優しそうな少女を選ぶ"
 !select_text="NEXT2"="別の人物を見てみる"
 
-
 #NEXT2
 &!charaimg_active="chara"="false"
 &!charaimg_active="white"="true"
@@ -27,8 +26,11 @@
 &!page_to="select"
 
 #END
-&???「ではその者のところへ向かうのだ」
-&!page_to="Story1"
+&!charaimg_active="chara"="false"
+&!charaimg_active="white"="false"
+&???「ではその者のところへ送ってやろう」
+&???「以降は全てお前次第だ」
+&!page_to="Story_A00"
 
 #BADEND
 &!page_to="END_00"

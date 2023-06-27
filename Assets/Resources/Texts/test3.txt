@@ -1,6 +1,0 @@
-﻿
-&!charaimg_active="chara"="true"
-
-&かな「test3だよ」
-&かな「test3だよ」
-&かな「test3だよ」
