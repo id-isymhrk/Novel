@@ -18,11 +18,17 @@
 &!charaimg_active="white"="false"
 
 &「他の候補者はどうやらいないらしい」
+&「もう一度あの２人から選ぶしかない」
 
+&!select_text="RE"="もう一度みよう"
+!select_text="BADEND"="面倒だな……"
+
+#RE
 &!page_to="select"
 
+#END
+&???「ではその者のところへ向かうのだ」
+&!page_to="Story1"
 
-#END&
-!charaimg_delete="yusya"=""
-&「ポリゴンを削除しました」
-&!page_to="test2"
+#BADEND
+&!page_to="END_00"

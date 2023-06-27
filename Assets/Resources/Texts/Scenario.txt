@@ -8,12 +8,9 @@
 !select_text="NEXT1"="わかった"
 !select_text="BADEND"="いいや、選びたくないね"
 
-&???「そうか、残念だよ」
-
-#BADEND
-&!background_sprite="badend"
-!wait="5"
-&「こうして世界は滅んだ」
-
 #NEXT1
 &!page_to="select"
+
+#BADEND
+&???「そうか、残念だよ」
+&!page_to="END_00"

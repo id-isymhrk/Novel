@@ -1,0 +1,3 @@
+&!background_sprite="badend"
+!wait="5"
+&「こうして世界は滅んだ」
